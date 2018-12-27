@@ -5,6 +5,8 @@ SafeLine 扩展插件系统（以下简称插件系统）使用 Lua 作为脚本
 
 在「网站防护」→「扩展插件管理」页面可对插件进行新增，查看，删除等操作。本文档将说明插件的编写方法以及可用的相关接口。
 
+[toc]
+
 ## 导入
 
 在编写插件时，首先需要导入 safeline 模块，safeline 模块包含了插件系统提供的所有接口。
@@ -50,6 +52,7 @@ end
 safeline.register(safeline.TYPE_PROCESS, match, process)
 ```
 `match` 是一个`table`，用来描述要匹配的请求的特征，其支持的字段见下表：
+
 | 字段 | 类型 | | 用途 | 
 |:--------|:--------:| :--------:| :--------: |
 | ip | 字符串 | | 匹配请求的源 IP，支持匹配单个 IP 地址（v4 或 v6）或使用 CIDR 记法表示的 IP 段 |
@@ -233,6 +236,7 @@ safeline.register(safeline.TYPE_QUERY, query, process)
 ### 访问频率控制
 SafeLine 的「访问控制规则」的部分接口。
 表 key 定义了限制条件：
+
 | 字段 | 含义 |
 |:--------:|:--------:|
 | scheme | 限制特定协议的请求，默认为 "http" |
@@ -242,6 +246,7 @@ SafeLine 的「访问控制规则」的部分接口。
 | url_path | 限制对特定地址的访问 |
 
 枚举值 scope 修饰了 key 中的定义：
+
 | 值 | 含义 |
 |:--------:|:--------:|
 | safeline.ACTION_SCOPE_ALL	| 限制所有请求 |
@@ -260,6 +265,7 @@ SafeLine 的「访问控制规则」的部分接口。
 ### KV 存储
 
 插件系统内置的键值对型数据库（key-value database）接口，所有接口函数的第一个参数需要指定在哪个 DB 中操作，可选值为如下：
+
 | DB | 用途|
 |:--------:|:--------:|
 | `safeline.DB_LOCAL` | 对于每个插件是独立的，不同插件之间互不干扰 |
@@ -419,5 +425,4 @@ end
  
 safeline.register(safeline.TYPE_QUERY, query, process)
 ```
-
 

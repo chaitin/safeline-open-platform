@@ -159,46 +159,48 @@ end)
 safeline.register(safeline.TYPE_QUERY, query, process)
 ```
 - query 是用户指定的查询的语句，用法如下
-        - Plumber SQL 使用
-        ```sql
-        --当前支持的语法如下：
-        SELECT [ DISTINCT ]
-        expression [ [ AS ] output_name ] [, ...]
-        [ FROM source_name ]
-        [ WHERE condition ]
-        [ GROUP BY window | expression [, ...] ]
-        [ HAVING condition [, ...] ]
-        [ ORDER BY expression [ ASC | DESC ] ]
-        [ LIMIT count ]
-        [ OFFSET start ];
-        ```
-        - Source
-        ```sql
-        --Source 代表了一个数据流，当前仅支持在 FROM 子句中直接指定 source_name。
-        --指定数据源后可在其他字句中直接引用流中的字段名。
-        SELECT word form article；
-        SELECT article.word form article；
-        ```
-        - 函数
-            - 窗口函数
-                窗口函数将无边界的数据流按照某种策略划分为有边界的数据分组，每个数据分组被成为一个「窗口」。
-                窗口函数只能在 GROUP BY 子句中使用，在表达式中被引用时，窗口函数的返回值为该窗口的 ID（对于时间窗口，该 ID 为窗口的起始时间戳）。
-                ```
-                注意： 当前仅支持时间窗口。
-                ```
-                - `TUMBLE_WINDOW(timestamp, size)`:使用滚动时间窗口，`timestamp` 为划分的时间戳，若数据流中的元素不包含可用的时间戳，可以使用 本地时间 `NOW()` 替代，`size` 为以秒为单位的窗口大小。
-                - `TUMBLE_WINDOW(timestamp, size, slide)`:使用滑动时间窗口，`timestamp` 为划分的时间戳，若数据流中的元素不包含可用的时间戳，可以使用 本地时间 `NOW()` 替代，`size` 为以秒为单位的窗口大小，`offset` 为以秒为单位的窗口滑动步长。
-            - 聚合函数
-                聚合函数将数据流中的分组聚合为单个元素。
-                聚合函数只能在 GROUP BY 中指定了 key 的情况下使用，且不允许在 WHERE 子句中使用。
-                - `COUNT(<expression>)`:统计当前分组中元素的个数。
-                ```
-                注意： 暂不支持 COUNT(*)。
-                ```
-                - `SUM(<expression>)`:对当前分组中的元素求和。
-            - 标记函数
-                标量函数可以作为任意表达式使用。
-                - `NOW()`:返回当前时间。
+    - Plumber SQL 使用
+    ```sql
+    --当前支持的语法如下：
+    SELECT [ DISTINCT ]
+    expression [ [ AS ] output_name ] [, ...]
+    [ FROM source_name ]
+    [ WHERE condition ]
+    [ GROUP BY window | expression [, ...] ]
+    [ HAVING condition [, ...] ]
+    [ ORDER BY expression [ ASC | DESC ] ]
+    [ LIMIT count ]
+    [ OFFSET start ];
+    ```
+    - Source
+    ```sql
+    --Source 代表了一个数据流，当前仅支持在 FROM 子句中直接指定 source_name。
+    --指定数据源后可在其他字句中直接引用流中的字段名。
+    SELECT word form article；
+    SELECT article.word form article；
+    ```
+    - 函数
+        - 窗口函数
+        
+            窗口函数将无边界的数据流按照某种策略划分为有边界的数据分组，每个数据分组被成为一个「窗口」。
+
+            窗口函数只能在 GROUP BY 子句中使用，在表达式中被引用时，窗口函数的返回值为该窗口的 ID（对于时间窗口，该 ID 为窗口的起始时间戳）。
+            ```
+            注意： 当前仅支持时间窗口。
+            ```
+            - `TUMBLE_WINDOW(timestamp, size)`:使用滚动时间窗口，`timestamp` 为划分的时间戳，若数据流中的元素不包含可用的时间戳，可以使用 本地时间 `NOW()` 替代，`size` 为以秒为单位的窗口大小。
+            - `TUMBLE_WINDOW(timestamp, size, slide)`:使用滑动时间窗口，`timestamp` 为划分的时间戳，若数据流中的元素不包含可用的时间戳，可以使用 本地时间 `NOW()` 替代，`size` 为以秒为单位的窗口大小，`offset` 为以秒为单位的窗口滑动步长。
+        - 聚合函数
+            聚合函数将数据流中的分组聚合为单个元素。
+            聚合函数只能在 GROUP BY 中指定了 key 的情况下使用，且不允许在 WHERE 子句中使用。
+            - `COUNT(<expression>)`:统计当前分组中元素的个数。
+            ```
+            注意： 暂不支持 COUNT(*)。
+            ```
+            - `SUM(<expression>)`:对当前分组中的元素求和。
+        - 标记函数
+            标量函数可以作为任意表达式使用。
+            - `NOW()`:返回当前时间。
 
 - 目前可用的数据源为  "access_log" ，其内容为当前所有请求的概要数据，具体字段如下：
 

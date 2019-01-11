@@ -89,7 +89,7 @@ process 是回调函数，当插件触发时被调用，参数的值即为请求
     - 返回值为 table，其 key 为 session ID，其 value 为 session  value。默认的 session ID 是字符串 "session"。
 
 
-- `info = skynet.get_detailed_info()`
+- `info = safeline.get_detailed_info()`
     - 获取当前请求的详细信息，返回值为 table，其索引随着 target 的不同。
     - 返回值为 table，当请求的 target 是 `safeline.MATCH_TARGET_ACCESS` 是，其内容为：
     

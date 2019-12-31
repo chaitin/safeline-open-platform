@@ -117,7 +117,8 @@ process 是回调函数，当插件触发时被调用，参数的值即为请求
     | method | 字符串 | 请求的[HTTP请求方法](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods) |
     | req_header_raw | 字符串 | 经过编码的 HTTP 请求头 |
     | resp_header_raw | 字符串 | 经过编码的 HTTP 响应头 |
-    | resp_body | 字符串 | 请求响应体 |
+    | body | 字符串 | 请求体 |
+    | resp_body | 字符串 | 响应体 |
     | src_ip | 字符串 | 请求的源 IP |
     | dest_ip | 字符串 | 请求的目的 IP |
     | attack_type | 整数 | 请求的攻击类型 |

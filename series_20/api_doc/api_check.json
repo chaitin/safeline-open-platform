@@ -1,0 +1,775 @@
+{
+    "/api/CertLoginAPI:GET": {
+        "serializer": "",
+        "permission": null,
+        "login_required": false
+    },
+    "/api/CertLoginAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|tfa_token | 字符串 | 非必填/'' | False | 两步验证验证码; 最小长度: 0；  | \n\n",
+        "permission": null,
+        "login_required": false
+    },
+    "/api/ChangeUserCredentialAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|authentication_method | 指定选项 | 必填 | False | 选项是: ['ldap', 'password', 'cert'] | \n|old_password | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n|new_password | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n|tfa_token | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/LoginAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|tfa_token | 字符串 | 非必填/'' | False | 两步验证验证码; 最小长度: 0；  | \n|username | 字符串 | 必填 | False |  -  | \n|password | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": null,
+        "login_required": false
+    },
+    "/api/ResetUserCredentialAPI:PUT": {
+        "serializer": "数据格式\n\n> 只需要传递 ID\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "User Management"
+        ],
+        "login_required": true
+    },
+    "/api/UnlockUserAPI:PUT": {
+        "serializer": "数据格式\n\n> 只需要传递 ID\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "User Management"
+        ],
+        "login_required": true
+    },
+    "/api/UserAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|username | 字符串 | 必填 | False | 最大长度: 16;  | \n|comment | 字符串 | 必填 | False | 最小长度: 0；  | \n|authentication_method | 指定选项 | 必填 | False | 选项是: ['ldap', 'password', 'cert'] | \n|permissions | 指定选项 | 必填 | False | 选项是: ['System Monitor', 'System Management', 'User Management', 'Website And Security Policy Management', 'Audit Log Management'] | \n|ip_policy | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#vfxpzftwbemywuozrruxdlhqolvxomia) | \n\n<a id=\"vfxpzftwbemywuozrruxdlhqolvxomia\">ip_policy</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | IP 范围;  | \n\n",
+        "permission": [
+            "User Management"
+        ],
+        "login_required": true
+    },
+    "/api/DownloadUserCertAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|token | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": null,
+        "login_required": false
+    },
+    "/api/UserAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|comment | 字符串 | 必填 | False | 最小长度: 0；  | \n|authentication_method | 指定选项 | 必填 | False | 选项是: ['ldap', 'password', 'cert'] | \n|permissions | 指定选项 | 必填 | False | 选项是: ['System Monitor', 'System Management', 'User Management', 'Website And Security Policy Management', 'Audit Log Management'] | \n|ip_policy | 列表 | 必填 | False | [ -  详见下方表格](#ywomadrftelbefzwypfqmnxaoghbvzkp) | \n\n<a id=\"ywomadrftelbefzwypfqmnxaoghbvzkp\">ip_policy</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | IP 范围;  | \n\n",
+        "permission": [
+            "User Management"
+        ],
+        "login_required": true
+    },
+    "/api/UserAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#vardiqgkkrqfynqvaiztxzamrkfhynih) | \n|username | 列表 | 必填 | False | [ -  详见下方表格](#ykwppezutgglekopzilqzpqyrsurvadn) | \n\n<a id=\"vardiqgkkrqfynqvaiztxzamrkfhynih\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"ykwppezutgglekopzilqzpqyrsurvadn\">username</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "User Management"
+        ],
+        "login_required": true
+    },
+    "/api/UserAPITokenAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|name | 字符串 | 必填 | False |  -  | \n|expire_time | 浮点数字 | 非必填/None | True | 为 null 时, 表示永不过期;  | \n|permissions | 指定选项 | 必填 | False | 选项是: ['System Monitor', 'System Management', 'User Management', 'Website And Security Policy Management', 'Audit Log Management'] | \n|ip_policy | 列表 | 必填 | False | [ -  详见下方表格](#nfshkhytihjvuqxtekzhqwrhqsvmnfvz) | \n\n<a id=\"nfshkhytihjvuqxtekzhqwrhqsvmnfvz\">ip_policy</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | IP 范围;  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/UserAPITokenAPI:DELETE": {
+        "serializer": "数据格式\n\n> 只需要传递 ID\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/UserAPITokenAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|permissions | 指定选项 | 必填 | False | 选项是: ['System Monitor', 'System Management', 'User Management', 'Website And Security Policy Management', 'Audit Log Management'] | \n|ip_policy | 列表 | 必填 | False | [ -  详见下方表格](#acvnlzcwhptxgopdwmlxmulkpovsfsvp) | \n\n<a id=\"acvnlzcwhptxgopdwmlxmulkpovsfsvp\">ip_policy</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | IP 范围;  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/UserAPITokenAPI:GET": {
+        "serializer": "",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/UserTFAConfigAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|tfa_token | 字符串 | 非必填/'' | False | 两步验证验证码; 最小长度: 0；  | \n|action | 指定选项 | 必填 | False | 选项是: ['disable', 'enable'] | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/UserTFAConfigAPI:GET": {
+        "serializer": "",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/UsernameExistsCheckAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|username | 字符串 | 必填 | False | 最大长度: 16;  | \n\n",
+        "permission": [
+            "User Management"
+        ],
+        "login_required": true
+    },
+    "/api/ACLDataAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|timestamp | 整型数字 | 必填 | False |  -  | \n|top_ip | 字典 | - | - | [详见下方表格](#ajntgxbcnhetgkwkdjxptxddailvezgm) | \n|top_ip_website | 字典 | - | - | [详见下方表格](#lzewwtgcpytztsmqbmzcivoqzoemmhhf) | \n|top_ip_url | 字典 | - | - | [详见下方表格](#mayhcllskqepqqwawqbzcfafztlpkpti) | \n|top_session | 字典 | - | - | [详见下方表格](#anwidvhlcneoymzjxejjzzcbjwjigihu) | \n|top_session_website | 字典 | - | - | [详见下方表格](#izmsfnadqpkctwxhcqcqqikazangymjh) | \n|top_session_url | 字典 | - | - | [详见下方表格](#rlxihlmlcqanlnplogqlgpypxfippkid) | \n\n<a id=\"ajntgxbcnhetgkwkdjxptxddailvezgm\">top_ip</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|count | 列表 | 必填 | False | [ -  详见下方表格](#fgrnwvwekmpgkwpswhdwvnuajvjjufwe) | \n|time | 列表 | 必填 | False | [ -  详见下方表格](#ofcboplxekwachstymozyuxacqcmbhrr) | \n|ip | 列表 | 必填 | False | [ -  详见下方表格](#cufygbvgiqwjuvadtupxedyvmqiujdbx) | \n\n<a id=\"fgrnwvwekmpgkwpswhdwvnuajvjjufwe\">count</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"ofcboplxekwachstymozyuxacqcmbhrr\">time</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 浮点数字 | 必填 | False |  -  | \n\n\n<a id=\"cufygbvgiqwjuvadtupxedyvmqiujdbx\">ip</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"lzewwtgcpytztsmqbmzcivoqzoemmhhf\">top_ip_website</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|count | 列表 | 必填 | False | [ -  详见下方表格](#iqhihhdqnlbqlswlrsckrmvmgbyfvaav) | \n|time | 列表 | 必填 | False | [ -  详见下方表格](#kgbtfvlesldalrbpduoviphvgwuydsre) | \n|ip | 列表 | 必填 | False | [ -  详见下方表格](#lydzzxerqundngfjqzfyytighfhoxrhl) | \n|website | 列表 | 必填 | False | [ -  详见下方表格](#ltmlegipvvnxtowztvusrbzbdfovwusr) | \n\n<a id=\"iqhihhdqnlbqlswlrsckrmvmgbyfvaav\">count</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"kgbtfvlesldalrbpduoviphvgwuydsre\">time</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 浮点数字 | 必填 | False |  -  | \n\n\n<a id=\"lydzzxerqundngfjqzfyytighfhoxrhl\">ip</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"ltmlegipvvnxtowztvusrbzbdfovwusr\">website</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"mayhcllskqepqqwawqbzcfafztlpkpti\">top_ip_url</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|count | 列表 | 必填 | False | [ -  详见下方表格](#xkcophbbdlxqvbuoobfebrpmrgldmqrf) | \n|time | 列表 | 必填 | False | [ -  详见下方表格](#gwuovcbshntqprztfiddrqlurfwbcppe) | \n|ip | 列表 | 必填 | False | [ -  详见下方表格](#rsmhtvbcscculaxbczjwsnbgghjircgt) | \n|url | 列表 | 必填 | False | [ -  详见下方表格](#nspkwckegodeisugjzwrbbmmdvwfgomh) | \n\n<a id=\"xkcophbbdlxqvbuoobfebrpmrgldmqrf\">count</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"gwuovcbshntqprztfiddrqlurfwbcppe\">time</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 浮点数字 | 必填 | False |  -  | \n\n\n<a id=\"rsmhtvbcscculaxbczjwsnbgghjircgt\">ip</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"nspkwckegodeisugjzwrbbmmdvwfgomh\">url</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"anwidvhlcneoymzjxejjzzcbjwjigihu\">top_session</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|count | 列表 | 必填 | False | [ -  详见下方表格](#sqamexaghcqffldckfmqaveigluikljl) | \n|time | 列表 | 必填 | False | [ -  详见下方表格](#kzxmuqoazpiriqpucwupniiimgszbmgn) | \n|session | 列表 | 必填 | False | [ -  详见下方表格](#ddqhepxhufkxtgsrqgszziwhraipwdug) | \n\n<a id=\"sqamexaghcqffldckfmqaveigluikljl\">count</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"kzxmuqoazpiriqpucwupniiimgszbmgn\">time</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 浮点数字 | 必填 | False |  -  | \n\n\n<a id=\"ddqhepxhufkxtgsrqgszziwhraipwdug\">session</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"izmsfnadqpkctwxhcqcqqikazangymjh\">top_session_website</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|count | 列表 | 必填 | False | [ -  详见下方表格](#myrrcqondxhacoayrwydtuyzhcdacujw) | \n|time | 列表 | 必填 | False | [ -  详见下方表格](#ceguimaphnggqcvkyynzmijvfeospypo) | \n|session | 列表 | 必填 | False | [ -  详见下方表格](#aansdblxsvwdtufxqiddhcjrjowwzrhv) | \n|website | 列表 | 必填 | False | [ -  详见下方表格](#iinvlasnljmwvrsxwnlwibzaownoabjo) | \n\n<a id=\"myrrcqondxhacoayrwydtuyzhcdacujw\">count</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"ceguimaphnggqcvkyynzmijvfeospypo\">time</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 浮点数字 | 必填 | False |  -  | \n\n\n<a id=\"aansdblxsvwdtufxqiddhcjrjowwzrhv\">session</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"iinvlasnljmwvrsxwnlwibzaownoabjo\">website</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"rlxihlmlcqanlnplogqlgpypxfippkid\">top_session_url</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|count | 列表 | 必填 | False | [ -  详见下方表格](#bqwfbwapupkxzunaxganugqurowwkwkx) | \n|time | 列表 | 必填 | False | [ -  详见下方表格](#zrpfzpgzntxkqykpitqaxcslnztazbwq) | \n|session | 列表 | 必填 | False | [ -  详见下方表格](#yexneemwgdcpvqngknrjxsjvfqyhnhrk) | \n|url | 列表 | 必填 | False | [ -  详见下方表格](#psplqqejuuandohufhmlodbkrslgtepa) | \n\n<a id=\"bqwfbwapupkxzunaxganugqurowwkwkx\">count</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"zrpfzpgzntxkqykpitqaxcslnztazbwq\">time</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 浮点数字 | 必填 | False |  -  | \n\n\n<a id=\"yexneemwgdcpvqngknrjxsjvfqyhnhrk\">session</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"psplqqejuuandohufhmlodbkrslgtepa\">url</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Minion"
+        ],
+        "login_required": true
+    },
+    "/api/ACLRuleExecutionLogAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|timestamp | 浮点数字 | 必填 | False |  -  | \n|rule_id_list | 列表 | 必填 | False | [ -  详见下方表格](#omeclpjxbkgvxvfbgqfqnoayvktslofc) | \n|count_list | 列表 | 必填 | False | [ -  详见下方表格](#khrkjpgigqnxoacpomtqrlngyzaigrzo) | \n\n<a id=\"omeclpjxbkgvxvfbgqfqnoayvktslofc\">rule_id_list</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"khrkjpgigqnxoacpomtqrlngyzaigrzo\">count_list</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False | 最小值: 0;  | \n\n",
+        "permission": [
+            "Minion"
+        ],
+        "login_required": true
+    },
+    "/api/ACLRuleExecutionLogAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#qmbyczsbfnhhpoevfwooruidzakcwdvo) | \n|timestamp__range | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#cebqkhkahtnzexjwitkbycmpwrizhzdp) | \n|acl_rule_id | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#slpnhnjawuihfsvbqvwuazzyvywgoqjl) | \n|acl_rule_template_id | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#xxmzzuvyneozszadsysyigdlsnjdvsrb) | \n\n<a id=\"qmbyczsbfnhhpoevfwooruidzakcwdvo\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"cebqkhkahtnzexjwitkbycmpwrizhzdp\">timestamp__range</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | 时间范围，比如 1234-4567, 1234-0;  | \n\n\n<a id=\"slpnhnjawuihfsvbqvwuazzyvywgoqjl\">acl_rule_id</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"xxmzzuvyneozszadsysyigdlsnjdvsrb\">acl_rule_template_id</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ClearACLRuleAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|acl_rule_template_id | 整型数字 | 必填 | False |  -  | \n|add_to_white_list | 布尔 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ACLRuleAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|acl_rule_template_id | 整型数字 | 必填 | False |  -  | \n|acl_rule_template_version | 整型数字 | 非必填/无默认值 | False | 最小值: 0;  | \n|targets | 列表 | 必填 | False | [ -  详见下方表格](#gmoitcpwlnkoafhvuqqcyrkpqkcxilad) | \n\n<a id=\"gmoitcpwlnkoafhvuqqcyrkpqkcxilad\">targets</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ACLRuleTemplateAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|name | 字符串 | 必填 | False |  -  | \n|match_method | OneOf 类型 | - | - | [详见下方表格](#aszgclutcoapcgpkpcrrxqqcvjnwhapj) | \n|action | OneOf 类型 | - | - | [详见下方表格](#olqktnaqyzbpmihvcxezwnbjkjfjcctf) | \n|expire_period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|targets | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#dobvmndjcoqelpxkqayvqqllxxxpqcph) | \n|template_type | 指定选项 | 必填 | False | 选项是: ['manual', 'auto'] | \n\n<a id=\"aszgclutcoapcgpkpcrrxqqcvjnwhapj\">1. match_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#hkzhdlmcxhteekrjrwcwzncgkewvuawo) | \n\n<a id=\"hkzhdlmcxhteekrjrwcwzncgkewvuawo\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|limit | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|scope | 指定选项 | 必填 | False | 选项是: ['All'] | \n\n\n<a id=\"aszgclutcoapcgpkpcrrxqqcvjnwhapj\">2. match_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#xkxbnyvaggziekmitjtlhluuwiglsbxd) | \n\n<a id=\"xkxbnyvaggziekmitjtlhluuwiglsbxd\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|limit | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|scope | 指定选项 | 必填 | False | 选项是: ['URL'] | \n|policy | 字符串 | 必填 | False | URL;  | \n\n\n<a id=\"aszgclutcoapcgpkpcrrxqqcvjnwhapj\">3. match_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#lokvzhdpgjvrmghpmirownurqmdhhzrl) | \n\n<a id=\"lokvzhdpgjvrmghpmirownurqmdhhzrl\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|limit | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|scope | 指定选项 | 必填 | False | 选项是: ['URL Prefix'] | \n|policy | 字符串 | 必填 | False | URL;  | \n\n\n<a id=\"olqktnaqyzbpmihvcxezwnbjkjfjcctf\">1. action</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#norrlhqenmgjmdnubxplritdvqypxegh) | \n\n<a id=\"norrlhqenmgjmdnubxplritdvqypxegh\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['forbid'] | \n\n\n<a id=\"olqktnaqyzbpmihvcxezwnbjkjfjcctf\">2. action</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#dggjxijrywfgsgvyqfwnzuudtjvusnwx) | \n\n<a id=\"dggjxijrywfgsgvyqfwnzuudtjvusnwx\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['Limit Rate'] | \n|limit_rate_limit | 整型数字 | 必填 | False | 最小值: 1;  | \n|limit_rate_period | 整型数字 | 必填 | False | 最小值: 1;  | \n\n\n<a id=\"dobvmndjcoqelpxkqayvqqllxxxpqcph\">targets</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ACLRuleAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|add_to_white_list | 布尔 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ACLRuleTemplateAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|name | 字符串 | 必填 | False |  -  | \n|match_method | OneOf 类型 | - | - | [详见下方表格](#eraezithgpirnrjwnslmewjwfdspidpu) | \n|action | OneOf 类型 | - | - | [详见下方表格](#nocestxgapcryqauadcfyoixrlhjcpyn) | \n|expire_period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n\n<a id=\"eraezithgpirnrjwnslmewjwfdspidpu\">1. match_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#zfkzklaelbvsatakomxntmpvhkvngnxz) | \n\n<a id=\"zfkzklaelbvsatakomxntmpvhkvngnxz\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|limit | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|scope | 指定选项 | 必填 | False | 选项是: ['All'] | \n\n\n<a id=\"eraezithgpirnrjwnslmewjwfdspidpu\">2. match_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#aydrcfopmyynzsmdfjvowxsvqmzqtgnx) | \n\n<a id=\"aydrcfopmyynzsmdfjvowxsvqmzqtgnx\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|limit | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|scope | 指定选项 | 必填 | False | 选项是: ['URL'] | \n|policy | 字符串 | 必填 | False | URL;  | \n\n\n<a id=\"eraezithgpirnrjwnslmewjwfdspidpu\">3. match_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#trbnekwyckntsfpkznjypvlizhcdhgfa) | \n\n<a id=\"trbnekwyckntsfpkznjypvlizhcdhgfa\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|limit | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|scope | 指定选项 | 必填 | False | 选项是: ['URL Prefix'] | \n|policy | 字符串 | 必填 | False | URL;  | \n\n\n<a id=\"nocestxgapcryqauadcfyoixrlhjcpyn\">1. action</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#jpbmrnchdjswhhiernxgpszrrgorvbsm) | \n\n<a id=\"jpbmrnchdjswhhiernxgpszrrgorvbsm\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['forbid'] | \n\n\n<a id=\"nocestxgapcryqauadcfyoixrlhjcpyn\">2. action</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#usmpudjbzbwmlapocopvrzlzlfyfuiyr) | \n\n<a id=\"usmpudjbzbwmlapocopvrzlzlfyfuiyr\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['Limit Rate'] | \n|limit_rate_limit | 整型数字 | 必填 | False | 最小值: 1;  | \n|limit_rate_period | 整型数字 | 必填 | False | 最小值: 1;  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ACLRuleAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|acl_rule_template_id | 整型数字 | 非必填/无默认值 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ACLRuleTemplateAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#dmwhrkmldcazoturonuyxoksfqvelzho) | \n\n<a id=\"dmwhrkmldcazoturonuyxoksfqvelzho\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/MarioACLRuleAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|acl_rule_template_id | 整型数字 | 必填 | False |  -  | \n|acl_rule_template_version | 整型数字 | 非必填/无默认值 | False | 最小值: 0;  | \n|targets | 列表 | 必填 | False | [ -  详见下方表格](#ynzniuqvrhoyfwsmfamzbrgbuusuuhsk) | \n\n<a id=\"ynzniuqvrhoyfwsmfamzbrgbuusuuhsk\">targets</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Minion"
+        ],
+        "login_required": true
+    },
+    "/api/ACLWhiteListAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|comment | 字符串 | 必填 | False | 最小长度: 0；  | \n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|target_list | 列表 | 必填 | False | [ -  详见下方表格](#njwphdnqkabwopawfigzejhljnnkcngi) | \n\n<a id=\"njwphdnqkabwopawfigzejhljnnkcngi\">target_list</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ACLWhiteListAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#ivmigodstsytxttmjbicemdpbljcledg) | \n\n<a id=\"ivmigodstsytxttmjbicemdpbljcledg\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ACLWhiteListAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 非必填/无默认值 | False | 选项是: ['CIDR', 'Session'] | \n|target | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#lrcmnjwuheecrchrhzarzlhtjwlensla) | \n|comment__like | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#slcoobpiosumzqkusvusqrtrbflatbmu) | \n\n<a id=\"lrcmnjwuheecrchrhzarzlhtjwlensla\">target</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"slcoobpiosumzqkusvusqrtrbflatbmu\">comment__like</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PluginACLRuleTemplateAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|name | 字符串 | 必填 | False |  -  | \n|match_method | OneOf 类型 | - | - | [详见下方表格](#wejpveflnsrcqvuzxwqcczmzcedsbjhv) | \n|action | OneOf 类型 | - | - | [详见下方表格](#cqzkkvbrwcdwwteivimtxxevyqiibyde) | \n|expire_period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|targets | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#lwwqcjmfsgtumkkycussxclipuyfsikl) | \n|template_type | 指定选项 | 必填 | False | 选项是: ['plugin'] | \n\n<a id=\"wejpveflnsrcqvuzxwqcczmzcedsbjhv\">1. match_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#gqrnpumkczbgdjqmqsttiaquuygoiext) | \n\n<a id=\"gqrnpumkczbgdjqmqsttiaquuygoiext\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|limit | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|scope | 指定选项 | 必填 | False | 选项是: ['All'] | \n\n\n<a id=\"wejpveflnsrcqvuzxwqcczmzcedsbjhv\">2. match_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#ezemiwrtztskandyxjshpwwanuyehvmt) | \n\n<a id=\"ezemiwrtztskandyxjshpwwanuyehvmt\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|limit | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|scope | 指定选项 | 必填 | False | 选项是: ['URL'] | \n|policy | 字符串 | 必填 | False | URL;  | \n\n\n<a id=\"wejpveflnsrcqvuzxwqcczmzcedsbjhv\">3. match_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#fxfkeeyopmctkrtrnoucjhexpwnpugow) | \n\n<a id=\"fxfkeeyopmctkrtrnoucjhexpwnpugow\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|target_type | 指定选项 | 必填 | False | 选项是: ['CIDR', 'Session'] | \n|period | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|limit | 整型数字 | 非必填/None | True | 最小值: 1;  | \n|scope | 指定选项 | 必填 | False | 选项是: ['URL Prefix'] | \n|policy | 字符串 | 必填 | False | URL;  | \n\n\n<a id=\"cqzkkvbrwcdwwteivimtxxevyqiibyde\">1. action</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#otwytofitfqmejzcybtvmvdcaiiadqzu) | \n\n<a id=\"otwytofitfqmejzcybtvmvdcaiiadqzu\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['forbid'] | \n\n\n<a id=\"cqzkkvbrwcdwwteivimtxxevyqiibyde\">2. action</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#krpvmpqzacyqwjhuwpkvsahrlvringxw) | \n\n<a id=\"krpvmpqzacyqwjhuwpkvsahrlvringxw\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['Limit Rate'] | \n|limit_rate_limit | 整型数字 | 必填 | False | 最小值: 1;  | \n|limit_rate_period | 整型数字 | 必填 | False | 最小值: 1;  | \n\n\n<a id=\"lwwqcjmfsgtumkkycussxclipuyfsikl\">targets</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Minion"
+        ],
+        "login_required": true
+    },
+    "/api/AlarmSubscriptionAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|receiver | OneOf 类型 | - | - | [详见下方表格](#cnklghcelpacwpklkaqqqnvetmyfbfns) | \n|alarm_type | 指定选项 | 必填 | False | 选项是: ['Plugin Management', 'System Management', 'ACL Management', 'Security Policy Management', 'Account Security', 'Request Log', 'Website Management', 'System Monitor And Alarm'] | \n|comment | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n\n<a id=\"cnklghcelpacwpklkaqqqnvetmyfbfns\">1. receiver</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#cvqlchuabxlsxsccjiyzkyzlkpeuxuor) | \n\n<a id=\"cvqlchuabxlsxsccjiyzkyzlkpeuxuor\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['email'] | \n|email | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"cnklghcelpacwpklkaqqqnvetmyfbfns\">2. receiver</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#idwkqzhiszjifgbghteieroajivvsymr) | \n\n<a id=\"idwkqzhiszjifgbghteieroajivvsymr\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['Webhook'] | \n|url | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"cnklghcelpacwpklkaqqqnvetmyfbfns\">3. receiver</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#xuaugnumnxlfmafzzwowrzfmolqnquas) | \n\n<a id=\"xuaugnumnxlfmafzzwowrzfmolqnquas\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['Syslog'] | \n|host | 字符串 | 必填 | False | IP 或者域名;  | \n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|protocol | 指定选项 | 必填 | False | 选项是: ['TCP', 'UDP'] | \n|rfc | 指定选项 | 必填 | False | 选项是: ['RFC3164', 'RFC5424'] | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/AlarmSubscriptionAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|receiver | OneOf 类型 | - | - | [详见下方表格](#kecdfsgmtsdgvrzuavumcqvawetjkwsg) | \n|alarm_type | 指定选项 | 必填 | False | 选项是: ['Plugin Management', 'System Management', 'ACL Management', 'Security Policy Management', 'Account Security', 'Request Log', 'Website Management', 'System Monitor And Alarm'] | \n|comment | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n\n<a id=\"kecdfsgmtsdgvrzuavumcqvawetjkwsg\">1. receiver</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#tozjpzeeezkfoeempernwjinqfmdbuei) | \n\n<a id=\"tozjpzeeezkfoeempernwjinqfmdbuei\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['email'] | \n|email | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"kecdfsgmtsdgvrzuavumcqvawetjkwsg\">2. receiver</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#kwzvugndbgmtlemcvmfauoxtonhxlvqz) | \n\n<a id=\"kwzvugndbgmtlemcvmfauoxtonhxlvqz\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['Webhook'] | \n|url | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"kecdfsgmtsdgvrzuavumcqvawetjkwsg\">3. receiver</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#wujhvfrfzxsbdqegujldmkogeeixuwov) | \n\n<a id=\"wujhvfrfzxsbdqegujldmkogeeixuwov\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['Syslog'] | \n|host | 字符串 | 必填 | False | IP 或者域名;  | \n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|protocol | 指定选项 | 必填 | False | 选项是: ['TCP', 'UDP'] | \n|rfc | 指定选项 | 必填 | False | 选项是: ['RFC3164', 'RFC5424'] | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/AlarmSubscriptionAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/AlarmThresholdAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/AlarmThresholdAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|cpu_usage | 字典 | - | - | [详见下方表格](#yehrrvwbxlicabudhesotzyneluvmggj) | \n|memory_usage | 字典 | - | - | [详见下方表格](#zjepvtogjytoxailrgormeumtzkakscn) | \n|disk_usage | 字典 | - | - | [详见下方表格](#pmjsyuczqwxkkrpbmnwdhuzirsnyzcfe) | \n|denied_request_number | 字典 | - | - | [详见下方表格](#xuwgyemqklijsnggztuaslqjrhvowiha) | \n|request_number | 字典 | - | - | [详见下方表格](#eshhzqzxxogglqmsxizqhkqudrriqljl) | \n|attack_request_number | 字典 | - | - | [详见下方表格](#oqhmbxkcntbsbpihfvobitzsyivbyvcr) | \n\n<a id=\"yehrrvwbxlicabudhesotzyneluvmggj\">cpu_usage</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|threshold | 整型数字 | 必填 | False | 最小值: 0; 最大值: 100 | \n|duration | 指定选项 | 必填 | False | 选项是: [1, 2, 5] | \n\n\n<a id=\"zjepvtogjytoxailrgormeumtzkakscn\">memory_usage</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|threshold | 整型数字 | 必填 | False | 最小值: 0; 最大值: 100 | \n|duration | 指定选项 | 必填 | False | 选项是: [1, 2, 5] | \n\n\n<a id=\"pmjsyuczqwxkkrpbmnwdhuzirsnyzcfe\">disk_usage</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|threshold | 整型数字 | 必填 | False | 最小值: 0; 最大值: 100 | \n\n\n<a id=\"xuwgyemqklijsnggztuaslqjrhvowiha\">denied_request_number</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|threshold | 整型数字 | 必填 | False | 最小值: 0;  | \n|duration | 指定选项 | 必填 | False | 选项是: [1, 2, 5] | \n\n\n<a id=\"eshhzqzxxogglqmsxizqhkqudrriqljl\">request_number</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|threshold | 整型数字 | 必填 | False | 最小值: 0;  | \n|duration | 指定选项 | 必填 | False | 选项是: [1, 2, 5] | \n\n\n<a id=\"oqhmbxkcntbsbpihfvobitzsyivbyvcr\">attack_request_number</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|threshold | 整型数字 | 必填 | False | 最小值: 0;  | \n|duration | 指定选项 | 必填 | False | 选项是: [1, 2, 5] | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SMTPConfigAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|server | 字符串 | 必填 | False | IP 或者域名;  | \n|port | 整型数字 | 必填 | False | 最小值: 1; 最大值: 65535 | \n|account | 字符串 | 必填 | False |  -  | \n|password | 字符串 | 非必填/'' | False |  -  | \n|tls | 布尔 | 必填 | False |  -  | \n|ssl | 布尔 | 必填 | False |  -  | \n|comment | 字符串 | 必填 | False | 最小长度: 0；  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SMTPConfigAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SMTPTestAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|email | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/ConfigBackupAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|options | 指定选项 | 必填 | False | 选项是: ['Alarm Subscription', 'Mario Plugin', 'SMTP Config', 'Report Subscription', 'Syslog Template', 'Alarm Threshold', 'User'] | \n|comment | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n|sync | 布尔 | 非必填/False | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/DownloadConfigBackupAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#nkbzqfqrkxlclnvvuldkxkkzptrdqbzt) | \n\n<a id=\"nkbzqfqrkxlclnvvuldkxkkzptrdqbzt\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/ConfigBackupAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/ConfigImportFromFileAPI:POST": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/ConfigImportOnlineAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|options | 指定选项 | 必填 | False | 选项是: ['Alarm Subscription', 'Mario Plugin', 'SMTP Config', 'Report Subscription', 'Syslog Template', 'Alarm Threshold', 'User'] | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/LicenseAPI:GET": {
+        "serializer": "",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/UploadLicenseAPI:POST": {
+        "serializer": "",
+        "permission": null,
+        "login_required": false
+    },
+    "/api/MgtAPIListenConfigAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/MgtAPIListenConfigAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|ports | 列表 | 必填 | False | [ -  详见下方表格](#axscnstmroueikfamlrfmtiqqxnpzxjm) | \n|ssl_cert | 整型数字 | 非必填/None | True |  -  | \n\n<a id=\"axscnstmroueikfamlrfmtiqqxnpzxjm\">ports</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#uvistjcqwatnycdsdpbflvecpshtkrpx) | \n\n<a id=\"uvistjcqwatnycdsdpbflvecpshtkrpx\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|ssl | 布尔 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/MgtAPIIPSourceAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/MgtAPIIPSourceAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|value | 列表 | 必填 | False | [ -  详见下方表格](#kmdxcyghlyshbgwmziabklemnbupslmg) | \n\n<a id=\"kmdxcyghlyshbgwmziabklemnbupslmg\">value</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SystemLanguageAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SystemLanguageAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|value | 指定选项 | 必填 | False | 选项是: ['zh-Hans', 'en-us'] | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/FlashMessageAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|timestamp | 浮点数字 | 必填 | False |  -  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/HARoleAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "Minion"
+        ],
+        "login_required": true
+    },
+    "/api/HARoleAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['demote', 'promote'] | \n\n",
+        "permission": [
+            "Minion"
+        ],
+        "login_required": true
+    },
+    "/api/LDAPConfigAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|ldap_uri | 字符串 | 必填 | False |  -  | \n|bind_dn | 字符串 | 必填 | False |  -  | \n|bind_password | 字符串 | 非必填/'' | False |  -  | \n|base_dn | 字符串 | 必填 | False |  -  | \n|user_key | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/LDAPConfigAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SyslogTemplateAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|audit_log | 字典 | - | - | [详见下方表格](#jnlzlvaczuwmjevvjafxgrrlpiqcjlpy) | \n|request_log | 字典 | - | - | [详见下方表格](#ycqayxquadrgavswzfctlyajfqrmqrab) | \n\n<a id=\"jnlzlvaczuwmjevvjafxgrrlpiqcjlpy\">audit_log</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['json', 'custom_fmt'] | \n|fmt | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n\n\n<a id=\"ycqayxquadrgavswzfctlyajfqrmqrab\">request_log</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['json', 'custom_fmt'] | \n|fmt | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SyslogTemplateAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/TaskLogAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#ofsxubfmlveheftyoijrsfullboxqrmy) | \n\n<a id=\"ofsxubfmlveheftyoijrsfullboxqrmy\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/TaskLogAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#yvoixbwyxfnxwdzfbhkaznzwczelmbve) | \n\n<a id=\"yvoixbwyxfnxwdzfbhkaznzwczelmbve\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/TaskLogAPI:GET": {
+        "serializer": "",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/PartitionConfigAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|period | 指定选项 | 必填 | False | 选项是: ['Day', 'Month', 'Week'] | \n|interval | 整型数字 | 必填 | False | 最小值: 1;  | \n|attach_tablespace | 字符串 | 非必填/无默认值 | False |  -  | \n|detach_tablespace | 字符串 | 非必填/无默认值 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/PartitionConfigAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/DownloadPartitionLogAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#zlprbzlgyycoadycouwvupqckjenmtcr) | \n\n<a id=\"zlprbzlgyycoadycouwvupqckjenmtcr\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/PartitionTablespaceAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|tablespace | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SystemUpgradeAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|token | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SystemUpgradeAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|token | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Minion"
+        ],
+        "login_required": true
+    },
+    "/api/UploadSystemUpgradePackageAPI:POST": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/DownloadPluginLogAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#ujrlngizbotoaguqwitnevlelwwbllvn) | \n|timestamp__range | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#krzymkipklphnkrixnkqnizzookbjtin) | \n|plugin_id | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#twlgkxqcncnjqbryofxlpklmwyzfkocj) | \n|tag__like | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#cbchbnrhfnkcmugcuzlsldxgyuwkllsa) | \n|content__like | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#vrlbcbgteivvdticnpkviwzxcidpcuzk) | \n\n<a id=\"ujrlngizbotoaguqwitnevlelwwbllvn\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"krzymkipklphnkrixnkqnizzookbjtin\">timestamp__range</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | 时间范围，比如 1234-4567, 1234-0;  | \n\n\n<a id=\"twlgkxqcncnjqbryofxlpklmwyzfkocj\">plugin_id</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"cbchbnrhfnkcmugcuzlsldxgyuwkllsa\">tag__like</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"vrlbcbgteivvdticnpkviwzxcidpcuzk\">content__like</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/MarioPluginAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|name | 字符串 | 必填 | False |  -  | \n|comment | 字符串 | 非必填/<class 'str'> | False | 最小长度: 0；  | \n|is_enabled | 布尔 | 必填 | False |  -  | \n|code | 字符串 | 必填 | False | lua 脚本;  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/MarioPluginAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#xageqgfpcyiomciyldcwxqkytpvoxysn) | \n\n<a id=\"xageqgfpcyiomciyldcwxqkytpvoxysn\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/MarioPluginAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|name | 字符串 | 必填 | False |  -  | \n|comment | 字符串 | 非必填/<class 'str'> | False | 最小长度: 0；  | \n|is_enabled | 布尔 | 必填 | False |  -  | \n|code | 字符串 | 必填 | False | lua 脚本;  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/MarioPluginAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/MarioPluginStateUpdateAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|timestamp | 浮点数字 | 必填 | False |  -  | \n|id | 字符串 | 必填 | False |  -  | \n|state | 指定选项 | 必填 | False | 选项是: ['running', 'compile-error'] | \n|total_execution | 整型数字 | 必填 | False |  -  | \n|total_error_execution | 整型数字 | 必填 | False |  -  | \n|execution_per_second | 浮点数字 | 必填 | False |  -  | \n|error_execution_per_second | 浮点数字 | 必填 | False |  -  | \n|average_execution_time | 浮点数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Minion"
+        ],
+        "login_required": true
+    },
+    "/api/PluginLogAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#grujmzwrfudpeebakdozancmdqlnnugs) | \n|timestamp__range | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#mpogkbwxumdbnnuyxzniqxfxqyilowhq) | \n|plugin_id | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#vybkwoncchnjlvfnwvneoakmumiaslrx) | \n|tag__like | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#zghrtwgurvydlmahckxuhaiwxvypzahq) | \n|content__like | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#jhswphxsdjjatywrzpnljvedkqdeuexe) | \n\n<a id=\"grujmzwrfudpeebakdozancmdqlnnugs\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"mpogkbwxumdbnnuyxzniqxfxqyilowhq\">timestamp__range</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | 时间范围，比如 1234-4567, 1234-0;  | \n\n\n<a id=\"vybkwoncchnjlvfnwvneoakmumiaslrx\">plugin_id</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"zghrtwgurvydlmahckxuhaiwxvypzahq\">tag__like</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"jhswphxsdjjatywrzpnljvedkqdeuexe\">content__like</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/HACommandAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|node | 字符串 | 必填 | False |  -  | \n|service | 字符串 | 必填 | False |  -  | \n|command | 指定选项 | 必填 | False | 选项是: ['recover', 'halt'] | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/NodeInfoAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Monitor"
+        ],
+        "login_required": true
+    },
+    "/api/ServerTimeAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/ServerTimeAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|value | 浮点数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/ServerControlledConfigAPI:GET": {
+        "serializer": "",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/PolicyGroupAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#zpbboomdzyvdyjaklycxhgstgqqwupoc) | \n\n<a id=\"zpbboomdzyvdyjaklycxhgstgqqwupoc\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyGroupAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|name | 字符串 | 必填 | False |  -  | \n|modules_state | 布尔 | 必填 | False |  -  | \n|response_detection_state | 布尔 | 必填 | False |  -  | \n|response_detection_max_body_size | 整型数字 | 必填 | False | 最小值: 1;  | \n|request_detection_max_body_size | 整型数字 | 必填 | False | 最小值: 1;  | \n|is_timeout_enabled | 布尔 | 必填 | False |  -  | \n|detection_timeout_threshold | 整型数字 | 必填 | False | 最小值: 0;  | \n|log_detection_timeout_event | 布尔 | 必填 | False |  -  | \n|modules_detection_config | JSON类型 | 必填 | False | JSON | \n|misc_detection_config | JSON类型 | 必填 | False | JSON | \n|forbidden_page_config | OneOf 类型 | - | - | [详见下方表格](#maguzfzxbkuwprstivqjyivqeyuavwch) | \n\n<a id=\"maguzfzxbkuwprstivqjyivqeyuavwch\">1. forbidden_page_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#egfprzggeqtpzjseqiihfgafflpqoone) | \n\n<a id=\"egfprzggeqtpzjseqiihfgafflpqoone\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['response'] | \n|status_code | 整型数字 | 必填 | False | 最小值: 101; 最大值: 599 | \n|path | 字符串 | 必填 | False | 大小写字母和数字; 最小长度: 0；  | \n\n\n<a id=\"maguzfzxbkuwprstivqjyivqeyuavwch\">2. forbidden_page_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#sbcbsnohkbpukoabldmddmuespruwwvl) | \n\n<a id=\"sbcbsnohkbpukoabldmddmuespruwwvl\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['redirect'] | \n|status_code | 指定选项 | 必填 | False | 选项是: [301, 302, 307] | \n|path | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyGroupAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyGroupSoftwarePortMirroringAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#aaqnvgazvileawtzwlcadbubiertiluh) | \n\n<a id=\"aaqnvgazvileawtzwlcadbubiertiluh\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyGroupSoftwarePortMirroringAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|name | 字符串 | 必填 | False |  -  | \n|modules_state | 布尔 | 必填 | False |  -  | \n|response_detection_state | 布尔 | 必填 | False |  -  | \n|response_detection_max_body_size | 整型数字 | 必填 | False | 最小值: 1;  | \n|request_detection_max_body_size | 整型数字 | 必填 | False | 最小值: 1;  | \n|is_timeout_enabled | 布尔 | 必填 | False |  -  | \n|detection_timeout_threshold | 整型数字 | 必填 | False | 最小值: 0;  | \n|log_detection_timeout_event | 布尔 | 必填 | False |  -  | \n|modules_detection_config | JSON类型 | 必填 | False | JSON | \n|misc_detection_config | JSON类型 | 必填 | False | JSON | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyGroupSoftwarePortMirroringAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyRulePriorityAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|website | 整型数字 | 非必填/None | True |  -  | \n|policy_rule_ids | 列表 | 必填 | False | [ -  详见下方表格](#fyxztfohxjmrotxalqiknolhinsfncyp) | \n\n<a id=\"fyxztfohxjmrotxalqiknolhinsfncyp\">policy_rule_ids</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyRuleAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|pattern | JSON类型 | 必填 | False | JSON | \n|action | 指定选项 | 必填 | False | 选项是: ['allow', 'dry_run', 'deny'] | \n|comment | 字符串 | 必填 | False |  -  | \n|attack_type | 指定选项 | 必填 | False | 选项是: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 61, 62] | \n|log_option | 指定选项 | 必填 | False | 选项是: ['Non-Persistence', 'Drop', 'Persistence'] | \n|expire_time | 浮点数字 | 必填 | True |  -  | \n|is_global | 布尔 | 必填 | False |  -  | \n|websites | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#wsdsfpshstqxtawhdgxcsubtuzfmhvyo) | \n|forbidden_page_config | OneOf 类型 | - | - | [详见下方表格](#ghogagtwkpnvocdfpoznlmentyiiddjt) | \n\n<a id=\"wsdsfpshstqxtawhdgxcsubtuzfmhvyo\">websites</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"ghogagtwkpnvocdfpoznlmentyiiddjt\">1. forbidden_page_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#drxgimyctpfydzhlbgsrqaciqpasamlf) | \n\n<a id=\"drxgimyctpfydzhlbgsrqaciqpasamlf\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['response'] | \n|status_code | 整型数字 | 必填 | False | 最小值: 101; 最大值: 599 | \n|path | 字符串 | 必填 | False | 大小写字母和数字; 最小长度: 0；  | \n\n\n<a id=\"ghogagtwkpnvocdfpoznlmentyiiddjt\">2. forbidden_page_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#nrbczjzvyqpzlxxyzjgtazvazbfoindw) | \n\n<a id=\"nrbczjzvyqpzlxxyzjgtazvazbfoindw\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['redirect'] | \n|status_code | 指定选项 | 必填 | False | 选项是: [301, 302, 307] | \n|path | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyRuleAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#ncewyilernjuptojkcubehfpupdardcc) | \n\n<a id=\"ncewyilernjuptojkcubehfpupdardcc\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyRuleAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|pattern | JSON类型 | 必填 | False | JSON | \n|action | 指定选项 | 必填 | False | 选项是: ['allow', 'dry_run', 'deny'] | \n|comment | 字符串 | 必填 | False |  -  | \n|attack_type | 指定选项 | 必填 | False | 选项是: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 61, 62] | \n|log_option | 指定选项 | 必填 | False | 选项是: ['Non-Persistence', 'Drop', 'Persistence'] | \n|expire_time | 浮点数字 | 必填 | True |  -  | \n|is_global | 布尔 | 必填 | False |  -  | \n|websites | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#fmapcgeootdklulxgdknwtlamghantqh) | \n|forbidden_page_config | OneOf 类型 | - | - | [详见下方表格](#ruhgcsvmdbsutqsugwdwsoryxdungvvl) | \n|id | 整型数字 | 必填 | False |  -  | \n|is_enabled | 布尔 | 必填 | False |  -  | \n\n<a id=\"fmapcgeootdklulxgdknwtlamghantqh\">websites</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"ruhgcsvmdbsutqsugwdwsoryxdungvvl\">1. forbidden_page_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#jfjwvtjfkwdiutmihsorqfiyvayfbdbn) | \n\n<a id=\"jfjwvtjfkwdiutmihsorqfiyvayfbdbn\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['response'] | \n|status_code | 整型数字 | 必填 | False | 最小值: 101; 最大值: 599 | \n|path | 字符串 | 必填 | False | 大小写字母和数字; 最小长度: 0；  | \n\n\n<a id=\"ruhgcsvmdbsutqsugwdwsoryxdungvvl\">2. forbidden_page_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#cxmjipcdrqdkpirbkeotnxrgrqfstdpf) | \n\n<a id=\"cxmjipcdrqdkpirbkeotnxrgrqfstdpf\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|action | 指定选项 | 必填 | False | 选项是: ['redirect'] | \n|status_code | 指定选项 | 必填 | False | 选项是: [301, 302, 307] | \n|path | 字符串 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyRuleSoftwarePortMirroringAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|pattern | JSON类型 | 必填 | False | JSON | \n|action | 指定选项 | 必填 | False | 选项是: ['allow', 'dry_run', 'deny'] | \n|comment | 字符串 | 必填 | False |  -  | \n|attack_type | 指定选项 | 必填 | False | 选项是: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 61, 62] | \n|log_option | 指定选项 | 必填 | False | 选项是: ['Non-Persistence', 'Drop', 'Persistence'] | \n|expire_time | 浮点数字 | 必填 | True |  -  | \n|is_global | 布尔 | 必填 | False |  -  | \n|websites | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#cpneplmcbefcnheoaeyvgktgmocmrjzk) | \n\n<a id=\"cpneplmcbefcnheoaeyvgktgmocmrjzk\">websites</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyRuleSoftwarePortMirroringAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#xmeqijvaginotnucsbptjninjeiilqnx) | \n\n<a id=\"xmeqijvaginotnucsbptjninjeiilqnx\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/PolicyRuleSoftwarePortMirroringAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|pattern | JSON类型 | 必填 | False | JSON | \n|action | 指定选项 | 必填 | False | 选项是: ['allow', 'dry_run', 'deny'] | \n|comment | 字符串 | 必填 | False |  -  | \n|attack_type | 指定选项 | 必填 | False | 选项是: [-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 61, 62] | \n|log_option | 指定选项 | 必填 | False | 选项是: ['Non-Persistence', 'Drop', 'Persistence'] | \n|expire_time | 浮点数字 | 必填 | True |  -  | \n|is_global | 布尔 | 必填 | False |  -  | \n|websites | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#rexxmrihshfvnagqqgrtnposslqihxoi) | \n|id | 整型数字 | 必填 | False |  -  | \n|is_enabled | 布尔 | 必填 | False |  -  | \n\n<a id=\"rexxmrihshfvnagqqgrtnposslqihxoi\">websites</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/ManualGenerateReportAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|time_range | 字符串 | 必填 | False | 时间范围，比如 1234-4567, 1234-0;  | \n|name | 字符串 | 必填 | False |  -  | \n|targets | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#iewakbfkzsrnavgjkymvtcrdmejtuiow) | \n|sync | 布尔 | 非必填/False | False |  -  | \n|type | 指定选项 | 必填 | False | 选项是: ['day', 'week', 'custom', 'month'] | \n\n<a id=\"iewakbfkzsrnavgjkymvtcrdmejtuiow\">targets</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | URL;  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/ReportResultAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#mjhjnvfejyeyblouxsqztdccbonrwtdf) | \n\n<a id=\"mjhjnvfejyeyblouxsqztdccbonrwtdf\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/ReportResultAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 非必填/无默认值 | False | 选项是: ['day', 'week', 'custom', 'month'] | \n|targets | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#nnjecfyyqsuiwazlidtiomsldwonwzxc) | \n|name__like | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#ankoyivlfqjzxvnexohrxykydddgtpxu) | \n|timestamp__range | 列表 | 必填 | False | [ -  详见下方表格](#seixqrvenscoqlyuazzxocpcbnppqadc) | \n\n<a id=\"nnjecfyyqsuiwazlidtiomsldwonwzxc\">targets</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"ankoyivlfqjzxvnexohrxykydddgtpxu\">name__like</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"seixqrvenscoqlyuazzxocpcbnppqadc\">timestamp__range</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | 时间范围，比如 1234-4567, 1234-0;  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/ReportSubscriptionAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|name | 字符串 | 必填 | False |  -  | \n|targets | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#uodxcanjdyrszdnudcuhkyhwgujttqtq) | \n|type | 指定选项 | 必填 | False | 选项是: ['day', 'week', 'month'] | \n\n<a id=\"uodxcanjdyrszdnudcuhkyhwgujttqtq\">targets</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | URL;  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/ReportSubscriptionAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#dvbcmnyztjozvkybrqukdeptuhwtypjm) | \n\n<a id=\"dvbcmnyztjozvkybrqukdeptuhwtypjm\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/ReportSubscriptionAPI:GET": {
+        "serializer": "",
+        "permission": [],
+        "login_required": true
+    },
+    "/api/CertAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#sqfauhaaptochmbqdrigtcfihxisqwto) | \n\n<a id=\"sqfauhaaptochmbqdrigtcfihxisqwto\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/CertAPI:GET": {
+        "serializer": "",
+        "permission": [
+            "Website And Security Policy Management",
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/UploadSSLCertAPI:POST": {
+        "serializer": "",
+        "permission": [
+            "Website And Security Policy Management",
+            "System Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwareClusterReverseProxyWebsiteAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|name | 字符串 | 必填 | False |  -  | \n|server_names | 列表 | 必填 | False | [ -  详见下方表格](#mwybngrdzffnxyamrnnvhdurrfsqkpqz) | \n|ports | 列表 | 必填 | False | [ -  详见下方表格](#dkxqpudqrprawjrkorxfwipqkgighrwe) | \n|policy_group | 整型数字 | 必填 | True |  -  | \n|session_method | 字典 | - | - | [详见下方表格](#kxxcbwmdslficqyxixawtzzwidxssnld) | \n\n<a id=\"mwybngrdzffnxyamrnnvhdurrfsqkpqz\">server_names</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | Nginx 的 server_name，可以是 IPv4、[IPv6]、域名或者泛域名;  | \n\n\n<a id=\"dkxqpudqrprawjrkorxfwipqkgighrwe\">ports</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#rwqosgqzpetbvinpsoxfxfufxjqosnmd) | \n\n<a id=\"rwqosgqzpetbvinpsoxfxfufxjqosnmd\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|ssl | 布尔 | 必填 | False |  -  | \n|http2 | 布尔 | 必填 | False |  -  | \n\n\n<a id=\"kxxcbwmdslficqyxixawtzzwidxssnld\">session_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['header', 'off', 'internal_session', 're', 'cookie', 'url_query', 'body_form'] | \n|param | 字符串 | 非必填/无默认值 | False | 最小长度: 0；  | \n|pattern | 字符串 | 非必填/无默认值 | False | 最小长度: 0；  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwareClusterReverseProxyWebsiteAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#steqwgogrneyvwabrcyocmeovuligrem) | \n\n<a id=\"steqwgogrneyvwabrcyocmeovuligrem\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwareClusterReverseProxyWebsiteAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|name | 字符串 | 必填 | False |  -  | \n|server_names | 列表 | 必填 | False | [ -  详见下方表格](#asakqfyuwntohbsvymtawtnembptdoqn) | \n|ports | 列表 | 必填 | False | [ -  详见下方表格](#gwqikhzpcrhavjhnvkivrvafodqmixqn) | \n|policy_group | 整型数字 | 必填 | True |  -  | \n|session_method | 字典 | - | - | [详见下方表格](#ytwzlbkquvvflstriefghkvwgohrwtml) | \n|detector_ip_source | 列表 | 必填 | False | [ -  详见下方表格](#rzsgkxgvvszejogfngdgkqvlkpbwpphg) | \n|access_log | 字典 | - | - | [详见下方表格](#mtdstwxjvawqgcfcsojkxdwqfieugswc) | \n\n<a id=\"asakqfyuwntohbsvymtawtnembptdoqn\">server_names</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | Nginx 的 server_name，可以是 IPv4、[IPv6]、域名或者泛域名;  | \n\n\n<a id=\"gwqikhzpcrhavjhnvkivrvafodqmixqn\">ports</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#qhtjgwkyuxpoogkmrhnppgsismdistzp) | \n\n<a id=\"qhtjgwkyuxpoogkmrhnppgsismdistzp\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|ssl | 布尔 | 必填 | False |  -  | \n|http2 | 布尔 | 必填 | False |  -  | \n\n\n<a id=\"ytwzlbkquvvflstriefghkvwgohrwtml\">session_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['header', 'off', 'internal_session', 're', 'cookie', 'url_query', 'body_form'] | \n|param | 字符串 | 非必填/无默认值 | False | 最小长度: 0；  | \n|pattern | 字符串 | 非必填/无默认值 | False | 最小长度: 0；  | \n\n\n<a id=\"rzsgkxgvvszejogfngdgkqvlkpbwpphg\">detector_ip_source</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"mtdstwxjvawqgcfcsojkxdwqfieugswc\">access_log</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|is_enabled | 布尔 | 必填 | False |  -  | \n|log_request_header | 布尔 | 必填 | False |  -  | \n|log_response_header | 布尔 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwareClusterReverseProxyWebsiteAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#wqbkteibcbjutogirshvmljmcmomvtph) | \n|name | 字符串 | 非必填/无默认值 | False |  -  | \n|create_time__range | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#kstcspryovjojrgvxsrwawkexbixjthj) | \n\n<a id=\"wqbkteibcbjutogirshvmljmcmomvtph\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"kstcspryovjojrgvxsrwawkexbixjthj\">create_time__range</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | 时间范围，比如 1234-4567, 1234-0;  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwarePortMirroringWebsiteAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|name | 字符串 | 必填 | False |  -  | \n|server_names | 列表 | 必填 | False | [ -  详见下方表格](#dmzfkkjfyrdxbhshsjbufvpvszbcmysx) | \n|ports | 列表 | 必填 | False | [ -  详见下方表格](#wajwszttdcxccgilidpfphifjrfhaanj) | \n|policy_group | 整型数字 | 必填 | True |  -  | \n\n<a id=\"dmzfkkjfyrdxbhshsjbufvpvszbcmysx\">server_names</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | Nginx 的 server_name，可以是 IPv4、[IPv6]、域名或者泛域名;  | \n\n\n<a id=\"wajwszttdcxccgilidpfphifjrfhaanj\">ports</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#apfqhnvthcoygzgtbawypdkhzwfdqisb) | \n\n<a id=\"apfqhnvthcoygzgtbawypdkhzwfdqisb\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|ssl | 布尔 | 必填 | False |  -  | \n|http2 | 布尔 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwarePortMirroringWebsiteAPI:DELETE": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#xlvvkgcuujhqfaaydrvygqicpkavhgqw) | \n\n<a id=\"xlvvkgcuujhqfaaydrvygqicpkavhgqw\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwarePortMirroringWebsiteAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|name | 字符串 | 必填 | False |  -  | \n|server_names | 列表 | 必填 | False | [ -  详见下方表格](#rrarqpyqvjmgzgncwhbwihefvcduojms) | \n|ports | 列表 | 必填 | False | [ -  详见下方表格](#kyevvipcphuyaojwaxpfvrqltzxgxufl) | \n|policy_group | 整型数字 | 必填 | True |  -  | \n|access_log | 字典 | - | - | [详见下方表格](#ztylcfwakkzwbmkfuspsabkoosiihrwh) | \n\n<a id=\"rrarqpyqvjmgzgncwhbwihefvcduojms\">server_names</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | Nginx 的 server_name，可以是 IPv4、[IPv6]、域名或者泛域名;  | \n\n\n<a id=\"kyevvipcphuyaojwaxpfvrqltzxgxufl\">ports</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#ybrehaqzzmbifqtksnhmnkbfsrymmqxa) | \n\n<a id=\"ybrehaqzzmbifqtksnhmnkbfsrymmqxa\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|ssl | 布尔 | 必填 | False |  -  | \n|http2 | 布尔 | 必填 | False |  -  | \n\n\n<a id=\"ztylcfwakkzwbmkfuspsabkoosiihrwh\">access_log</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|is_enabled | 布尔 | 必填 | False |  -  | \n|log_request_header | 布尔 | 必填 | False |  -  | \n|log_response_header | 布尔 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwarePortMirroringWebsiteAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#dcvjfyownduxzxpjolactlmtxtilcvoo) | \n|name | 字符串 | 非必填/无默认值 | False |  -  | \n|create_time__range | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#jwdenkyzkctvlmwlkwjizbbpgobyubuh) | \n\n<a id=\"dcvjfyownduxzxpjolactlmtxtilcvoo\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"jwdenkyzkctvlmwlkwjizbbpgobyubuh\">create_time__range</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | 时间范围，比如 1234-4567, 1234-0;  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/EnableDisableWebsiteAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#nbigwntivjermmbznhrtfqbxbyhkfmwm) | \n|action | 指定选项 | 必填 | False | 选项是: ['disable', 'enable'] | \n\n<a id=\"nbigwntivjermmbznhrtfqbxbyhkfmwm\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwareReverseProxyWebsiteAPI:POST": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|name | 字符串 | 必填 | False |  -  | \n|server_names | 列表 | 必填 | False | [ -  详见下方表格](#udirroqbobnbwxnvivoagfkorluznvdw) | \n|ports | 列表 | 必填 | False | [ -  详见下方表格](#ewbcuofcsrhveefyxizzkxbbajmpacue) | \n|ssl_cert | 整型数字 | 非必填/None | True |  -  | \n|backend_config | OneOf 类型 | - | - | [详见下方表格](#fxdvultlbjvghxfaacschexvryhyhdve) | \n|policy_group | 整型数字 | 必填 | True |  -  | \n|session_method | 字典 | - | - | [详见下方表格](#byuttycjpfmlcnhpeyryxwlfhxwlybis) | \n\n<a id=\"udirroqbobnbwxnvivoagfkorluznvdw\">server_names</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | Nginx 的 server_name，可以是 IPv4、[IPv6]、域名或者泛域名;  | \n\n\n<a id=\"ewbcuofcsrhveefyxizzkxbbajmpacue\">ports</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#yfufrlgqmwkfzuxbcnsrqdatdikceshw) | \n\n<a id=\"yfufrlgqmwkfzuxbcnsrqdatdikceshw\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|ssl | 布尔 | 必填 | False |  -  | \n|http2 | 布尔 | 必填 | False |  -  | \n\n\n<a id=\"fxdvultlbjvghxfaacschexvryhyhdve\">1. backend_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#ryonnrhmrzhnjqysvfkjjjvgthmztlrk) | \n\n<a id=\"ryonnrhmrzhnjqysvfkjjjvgthmztlrk\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['proxy'] | \n|load_balance_policy | 指定选项 | 必填 | False | 选项是: ['Round Robin', 'Least Connected', 'IP Hash'] | \n|servers | 列表 | 必填 | False | [ -  详见下方表格](#crlbizzxnyvevtkmkvhxmwxpdmhzatrs) | \n|x_forwarded_for_action | 指定选项 | 必填 | False | 选项是: ['append', 'cover', 'no_action'] | \n\n<a id=\"crlbizzxnyvevtkmkvhxmwxpdmhzatrs\">servers</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#pdowpkjdwmrjhkvoouhtaelsnzxpjjpi) | \n\n<a id=\"pdowpkjdwmrjhkvoouhtaelsnzxpjjpi\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|protocol | 指定选项 | 必填 | False | 选项是: ['https', 'http'] | \n|host | 字符串 | 必填 | False | IP 或者域名;  | \n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|weight | 整型数字 | 非必填/1 | False | 最小值: 1;  | \n\n\n<a id=\"fxdvultlbjvghxfaacschexvryhyhdve\">2. backend_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#yzhttmlimzpxwzaonimuqdgxompwtgep) | \n\n<a id=\"yzhttmlimzpxwzaonimuqdgxompwtgep\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['response'] | \n|status_code | 指定选项 | 必填 | False | 选项是: [200, 400, 401, 402, 404, 405, 500, 503, 504] | \n|path | 字符串 | 必填 | False | 大小写字母和数字;  | \n\n\n<a id=\"fxdvultlbjvghxfaacschexvryhyhdve\">3. backend_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#ovlydbccyyqfjwphnvyqajjkuoyqfnan) | \n\n<a id=\"ovlydbccyyqfjwphnvyqajjkuoyqfnan\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['redirect'] | \n|status_code | 指定选项 | 必填 | False | 选项是: [301, 302, 307] | \n|path | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"byuttycjpfmlcnhpeyryxwlfhxwlybis\">session_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['header', 'off', 'internal_session', 're', 'cookie', 'url_query', 'body_form'] | \n|param | 字符串 | 非必填/无默认值 | False | 最小长度: 0；  | \n|pattern | 字符串 | 非必填/无默认值 | False | 最小长度: 0；  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwareReverseProxyWebsiteAPI:PUT": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id | 整型数字 | 必填 | False |  -  | \n|name | 字符串 | 必填 | False |  -  | \n|server_names | 列表 | 必填 | False | [ -  详见下方表格](#einkiubnnvybwxdbdrvmiqeycpbsijsh) | \n|ports | 列表 | 必填 | False | [ -  详见下方表格](#qjsnxiiknicivwoctqjdwgggmpmqcyqj) | \n|ssl_cert | 整型数字 | 非必填/None | True |  -  | \n|backend_config | OneOf 类型 | - | - | [详见下方表格](#xjqbiiavltqkkqnhpblksoulxvjgdrap) | \n|policy_group | 整型数字 | 必填 | True |  -  | \n|session_method | 字典 | - | - | [详见下方表格](#txbkjfggmfvudyohtxixvbvnjqmpjauo) | \n|ssl_protocols | 指定选项 | 必填 | False | 选项是: ['TLSv1', 'TLSv1.1', 'SSLv2', 'TLSv1.2', 'SSLv3'] | \n|ssl_ciphers | 字符串 | 必填 | False | 最小长度: 0；  | \n|detector_ip_source | 列表 | 必填 | False | [ -  详见下方表格](#tegiddwbcgcwlorhlgavbdnzkkwzyqxq) | \n|access_log | 字典 | - | - | [详见下方表格](#oataorffxgtdygvaszzhqvrgxclbotrc) | \n\n<a id=\"einkiubnnvybwxdbdrvmiqeycpbsijsh\">server_names</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | Nginx 的 server_name，可以是 IPv4、[IPv6]、域名或者泛域名;  | \n\n\n<a id=\"qjsnxiiknicivwoctqjdwgggmpmqcyqj\">ports</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#tqjrxcougjmpadiacotjjwkmeqeccrgh) | \n\n<a id=\"tqjrxcougjmpadiacotjjwkmeqeccrgh\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|ssl | 布尔 | 必填 | False |  -  | \n|http2 | 布尔 | 必填 | False |  -  | \n\n\n<a id=\"xjqbiiavltqkkqnhpblksoulxvjgdrap\">1. backend_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#fqbuyjwotvwrsdtyutvxzyehdyxamgwx) | \n\n<a id=\"fqbuyjwotvwrsdtyutvxzyehdyxamgwx\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['proxy'] | \n|load_balance_policy | 指定选项 | 必填 | False | 选项是: ['Round Robin', 'Least Connected', 'IP Hash'] | \n|servers | 列表 | 必填 | False | [ -  详见下方表格](#cbmnmormupyzqjqzwzeodddepmolmpru) | \n|x_forwarded_for_action | 指定选项 | 必填 | False | 选项是: ['append', 'cover', 'no_action'] | \n|header_config | 列表 | 必填 | False | [ -  详见下方表格](#ufcfaiblxczhkrkbhyjfbkjfopixxhbe) | \n|health_check_config | 字典 | - | - | [详见下方表格](#urqwdeebtobfugpdwcbhjgvlrpmnosju) | \n|proxy_ssl_protocols | 指定选项 | 必填 | False | 选项是: ['TLSv1', 'TLSv1.1', 'SSLv2', 'TLSv1.2', 'SSLv3'] | \n|proxy_ssl_ciphers | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n\n<a id=\"cbmnmormupyzqjqzwzeodddepmolmpru\">servers</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#vklimwxpglrrseyqnhbfgrvhobdkhxrd) | \n\n<a id=\"vklimwxpglrrseyqnhbfgrvhobdkhxrd\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|protocol | 指定选项 | 必填 | False | 选项是: ['https', 'http'] | \n|host | 字符串 | 必填 | False | IP 或者域名;  | \n|port | 整型数字 | 必填 | False | 最小值: 1;  | \n|weight | 整型数字 | 非必填/1 | False | 最小值: 1;  | \n\n\n<a id=\"ufcfaiblxczhkrkbhyjfbkjfopixxhbe\">header_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#kdmjearkiggnwadgdyebxiykyuakfotr) | \n\n<a id=\"kdmjearkiggnwadgdyebxiykyuakfotr\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|name | 字符串 | 必填 | False |  -  | \n|context | 指定选项 | 必填 | False | 选项是: ['response', 'request'] | \n|action | 指定选项 | 必填 | False | 选项是: ['hide', 'set'] | \n|value | 字符串 | 非必填/'' | False | 最小长度: 0；  | \n\n\n<a id=\"urqwdeebtobfugpdwcbhjgvlrpmnosju\">health_check_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|is_enabled | 布尔 | 必填 | False |  -  | \n|check_http_expect_alive | 指定选项 | 必填 | False | 选项是: ['http_2xx', 'http_3xx', 'http_5xx', 'http_4xx'] | \n|check_type | 指定选项 | 必填 | False | 选项是: ['http'] | \n|interval | 整型数字 | 必填 | False | 最小值: 1;  | \n|fall | 整型数字 | 必填 | False | 最小值: 1;  | \n|rise | 整型数字 | 必填 | False | 最小值: 1;  | \n|timeout | 整型数字 | 必填 | False | 最小值: 1;  | \n|port | 整型数字 | 必填 | False | 最小值: 0;  | \n|http_send | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"xjqbiiavltqkkqnhpblksoulxvjgdrap\">2. backend_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#qufmtseblinjoxzempxkpxvkidwhogul) | \n\n<a id=\"qufmtseblinjoxzempxkpxvkidwhogul\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['response'] | \n|status_code | 指定选项 | 必填 | False | 选项是: [200, 400, 401, 402, 404, 405, 500, 503, 504] | \n|path | 字符串 | 必填 | False | 大小写字母和数字;  | \n\n\n<a id=\"xjqbiiavltqkkqnhpblksoulxvjgdrap\">3. backend_config</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字典 | - | - | [详见下方表格](#fzsgxvtxzrafejfgvixksztmlrzftgol) | \n\n<a id=\"fzsgxvtxzrafejfgvixksztmlrzftgol\">子字段</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['redirect'] | \n|status_code | 指定选项 | 必填 | False | 选项是: [301, 302, 307] | \n|path | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"txbkjfggmfvudyohtxixvbvnjqmpjauo\">session_method</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|type | 指定选项 | 必填 | False | 选项是: ['header', 'off', 'internal_session', 're', 'cookie', 'url_query', 'body_form'] | \n|param | 字符串 | 非必填/无默认值 | False | 最小长度: 0；  | \n|pattern | 字符串 | 非必填/无默认值 | False | 最小长度: 0；  | \n\n\n<a id=\"tegiddwbcgcwlorhlgavbdnzkkwzyqxq\">detector_ip_source</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False |  -  | \n\n\n<a id=\"oataorffxgtdygvaszzhqvrgxclbotrc\">access_log</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|is_enabled | 布尔 | 必填 | False |  -  | \n|log_request_header | 布尔 | 必填 | False |  -  | \n|log_response_header | 布尔 | 必填 | False |  -  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/SoftwareReverseProxyWebsiteAPI:GET": {
+        "serializer": "数据格式\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|id__in | 列表 | 非必填/<class 'list'> | False | [ -  详见下方表格](#kflrupyshdzdaacdllqcyxgqmvgticjk) | \n|name | 字符串 | 非必填/无默认值 | False |  -  | \n|create_time__range | 列表 | 非必填/无默认值 | False | [ -  详见下方表格](#leosihwnvabmrdfwjpfrcebupieyzhmi) | \n\n<a id=\"kflrupyshdzdaacdllqcyxgqmvgticjk\">id__in</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 整型数字 | 必填 | False |  -  | \n\n\n<a id=\"leosihwnvabmrdfwjpfrcebupieyzhmi\">create_time__range</a>\n\n|字段名|数据类型|是否必填/默认值|NULL|其他|\n|:--|:-:|:-:|:-:|:-:|\n|子字段 | 字符串 | 必填 | False | 时间范围，比如 1234-4567, 1234-0;  | \n\n",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    },
+    "/api/UploadForbiddenPageAPI:POST": {
+        "serializer": "",
+        "permission": [
+            "Website And Security Policy Management"
+        ],
+        "login_required": true
+    }
+}

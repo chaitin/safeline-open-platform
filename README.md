@@ -30,7 +30,7 @@ SafeLine 插件平台 SDK 文档见
 [10 系列](./series_10/plugin_sdk.md)  | [20 系列](./series_20/plugin_sdk.md)     
 
 SafeLine 插件 Demo 见
-[10 系列](./series_10/plugin_demo/)  | [20 系列](./series_20/plugin_demo/)
+[10 系列](./series_10/plugin_demo/)  | [20 系列(可参考 10 系列)](./series_20/plugin_demo/)
 
 
 ## License

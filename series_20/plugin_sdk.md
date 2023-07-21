@@ -412,9 +412,9 @@ SafeLine 的「访问控制规则」的部分接口。
 ```lua
 local safeline = require "safeline"
  
-query = [[ SELECT ip, (scheme + '://' + host + url_path) as url, time FROM access_log WHERE time > 0.01 ]]
+local query = [[ SELECT ip, (scheme + '://' + host + url_path) as url, time FROM access_log WHERE time > 0.01 ]]
  
-function process(key, rows)
+local function process(key, rows)
     for row in rows do
         safeline.log("耗时请求", "IP: " .. row.ip .. ", URL: " .. row.url .. ", time: " .. row.time)
     end
